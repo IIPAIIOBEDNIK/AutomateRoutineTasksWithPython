@@ -71,16 +71,20 @@ def seventh():
 
 seventh()
 
+def eight():
+    for i in range(12, 16):
+        print(i)
 
+eight()
 
+def ninth():
+    for i in range(0, 10,2):
+        print(i)
 
+ninth()
 
+def tenth():
+    for i in range(5, -1, -1):
+        print(i)
 
-
-
-
-
-
-
-
-
+tenth()
