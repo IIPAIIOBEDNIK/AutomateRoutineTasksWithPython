@@ -40,6 +40,46 @@ def fourth():
             break
     print('Thank you!')
 
+#fourth()
+
+def fifth():
+    while True:
+        print('Who are you?')
+        name = input()
+        if name != 'Alex':
+            continue
+        print("Hello, Alex. What's the password? (It's a fish.)")
+        password = input()
+        if password == 'swordfish':
+            break
+    print('Access granted')
+
+#fifth()
+
+def sixth():
+    print('My name is')
+    for i in range (5):
+        print("Jimmy Five Times (" + str(i) + ")")
+
+sixth()
+
+def seventh():
+    total = 0
+    for num in range (101):
+        total += num
+    print(total)
+
+seventh()
+
+
+
+
+
+
+
+
+
+
 
 
 
