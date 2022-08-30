@@ -366,26 +366,42 @@
 # # Как и метод sort(), метод reverse() не возвращает список, поэтому необходимо писать spam.reverse(),
 # # а не spam = spam.reverse().
 
-# Пример программы Magic 8 Ball без использования elif
-import random
-message = ['It is certaine',
-           'It is decidedly so',
-           'Yes',
-           'Reply hazy try again',
-           'Ask again later',
-           'Concentrate and ask again',
-           'My reply is no',
-           'Outlook not so good',
-           'Very doubtful']
-print(message[random.randint(0, len(message) - 1)])
+# # Пример программы Magic 8 Ball без использования elif
+# import random
+# message = ['It is certaine',
+#            'It is decidedly so',
+#            'Yes',
+#            'Reply hazy try again',
+#            'Ask again later',
+#            'Concentrate and ask again',
+#            'My reply is no',
+#            'Outlook not so good',
+#            'Very doubtful']
+# print(message[random.randint(0, len(message) - 1)])
 
 
 
+# Списковые типы данных
+# Список - не единственный тип данных, представляющий собой упорядоченную последовательность значений. Строки во многом
+# напоминают списки, если рассматривать строку как список, состоящий из символов. К списковым типам данных относятся
+# списки, строки, объекты диапазона, возвращаемые методом range(), и кортежи. Много из того, что можно делать со
+# списками, можно делать и со строками, а также остальными списковыми типами. В частности, к ним применимы операции
+# индексирования и получения срезов, операторы in и not in и функции наподобие len(). Также они могут использоваться в
+# циклах for
+name = 'Сократ'
+print(name[0])
+print(name[-2])
+print(name[0:4])
+print('Со' in name)
+print('с' in name)
+print('а' not in name)
+for i in name:
+    print('* * * ' + i + ' * * *')
 
 
 
-
-
+# Изменяемые и неизменяемые типы данных
+#
 
 
 
