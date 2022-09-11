@@ -157,7 +157,79 @@
 
 
 
-# Красивый вывод
+# # Красивый вывод
+# # Импортировав модуль pprint, вы получите доступ к функции pprint() и pformat(), которые обеспечивают красивый вывод
+# # значений словаря. Это может понадобиться, если нужно расширить возможности функции print()
+# import pprint
+# message = 'It was a bright cold day in April, and the clocks were striking thirteen'
+# count = {}
+# for character in message:
+#     count.setdefault(character, 0)
+#     count[character] = count[character] + 1
+# print(count)
+
+
+# # Функция pprint.pprint() особенно полезна в тех случаях, когда словарь содержит вложенные списки и словари. Если нужно
+# # получить аккуратно оформленный текст в виде строки, а не выводить его на экран, то воспользуйтесь функцией
+# # pprint.pformat(). Следующие две инструкции эквивалентны.
+# pprint.pprint(someDictionaryValue)
+# print(pprint.pprint(someDictionaryValue))
+
+
+
+
+# Использование структур данных для моделирования реальных объектов.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
