@@ -113,49 +113,69 @@
 # print(response)
 
 
-# Если помимо этих аргументов указан также аргумент default, функция не сгенерирует исключение, а вернет значение,
-# переданное ей с помощью этого аргумента
+# # Если помимо этих аргументов указан также аргумент default, функция не сгенерирует исключение, а вернет значение,
+# # переданное ей с помощью этого аргумента
+# import pyinputplus as pyip
+# response = pyip.inputNum('Введите число: ', limit=2, default='N/A')
+# print(response)
+# # Вместо генерации исключения RetryLimitException, функция inputNum() возвращает строку 'N/A'
+
+
+
+
+# # Именованные аргументы allowRegexes и blockRegexes
+# # Указывать допустимые значения можно также с помощью регулярных выражений. Именованные аргументы allowRegexes и
+# # blockRegexes позволяют задать списки регулярных выражений, определяющих, какие значения функция принимает в
+# # качестве допустимых, а какие - отклоняет.
+# import pyinputplus as pyip
+# response = pyip.inputNum(allowRegexes=[r'(I|V|X|L|C|D|M)+', r'zero'])
+# print(response)
+# response = pyip.inputNum(allowRegexes=[r'(i|v|x|l|c|d|m)+', r'zero'])
+# print(response)
+# # Конечно, эти регулярные выражения задают только буквы, которые разрешается вводить пользователю. Порядок цифр в
+# # числе может оказаться неправильным, например "XVX", потому что регулярное выражение r'(I|V|X|L|C|D|M)+'
+# # допускает такое число.
+
+
+# # С помощью именованного аргумента blockRegexes можно также указать список регулярных выражений, которые функция
+# # не будет принимать.
+# import pyinputplus as pyip
+# response = pyip.inputNum(blockRegexes=[r'[02468]$'])
+# print(response)
+
+
+# Если указать оба аргумента - и allowRegexes, и blockRegexes, - то список разрешений перекрывает список блокировок.
+# Например, код разрешает ввод слов 'caterpillar', 'category', но блокирует любые другие строки, содержащие слово 'cat'.
 import pyinputplus as pyip
-response = pyip.inputNum('Введите число: ', limit=2, default='N/A')
+response = pyip.inputStr('Введите текст: ', allowRegexes=[r'caterpillar', 'category'], blockRegexes=[r'cat'])
 print(response)
-# Вместо генерации исключения RetryLimitException, функция inputNum() возвращает строку 'N/A'
 
 
 
 
-# Именованные аргументы allowRegexes и blockRegexes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Передача пользовательской функции проверки в функцию inputCustom()
+# Можно написать функцию, реализующую требуемую логику проверки, и передать ее функции inputCustom(). Допустим,
+# необходимо, чтобы пользователь ввел последовательность цифр, в сумме равных 10. Функции
+# puinputplus.inputAddsUpToTen() не существует, но можно создать свою собственную функцию, которая:
+# имеет один строковый аргумент (значение, введенное пользователем);
+# генерирует исключение, если строка не проходит проверку;
+# возвращает None (инструкция return может быть опущена), если функция inputCustom() должна вернуть строку без
+# изменений;
+#  возвращает значение, отличное от None, если функция inputCustom() должна вернуть строку, отличную от той, которую
+#  ввел пользователь
+# передается в качестве первого аргумента функции inputCustom().
+# Например, можно создать пользовательскую функцию add_up_to_ten() и передать ее функцию inputCustom(). При этом
+# вызов должен выглядеть как inputCustom(dd_to_ten), а не input_custom(add_to_ten()), потому что мы передаем ссылку
+# на функцию add_to_ten(), а не возвращаемое ею значение.
+import pyinputplus as pyip
+def adds_up_to_ten(numbers):
+    number_list = list(numbers)
+    for i, digit in enumerate(number_list):
+        number_list[i] = int(digit)
+    if sum(number_list) != 10:
+        raise Exception('Сумма должна быть 10, а не %s.' % (sum(number_list)))
+    return int(numbers) # вернуть целое число
+print(response = pyip.inputCustom(adds_up_to_ten)) # без скобок после имени
+print(response)
+print(response = pyip.inputCustom(adds_up_to_ten))
+print(response)
